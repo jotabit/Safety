@@ -179,21 +179,21 @@ class SafeAst {
 					transformed = true;
 					e = macro @:pos(e.pos) {
 						var _v_ = $target;
-						_v_ == null ? null : @:nullSafety(false) _v_.$field($a{args});
+						_v_ == null ? null : Safety.unsafe(_v_).$field($a{args});
 					};
 					return e.map(transform);
 				case macro $target!.$field[$index]:
 					transformed = true;
 					e = macro @:pos(e.pos) {
 						var _v_ = $target;
-						_v_ == null ? null : @:nullSafety(false) _v_.$field[$index];
+						_v_ == null ? null : Safety.unsafe(_v_).$field[$index];
 					};
 					return e.map(transform);
 				case macro $target!.$field:
 					transformed = true;
 					e = macro @:pos(e.pos) {
 						var _v_ = $target;
-						_v_ == null ? null : _v_.$field;
+						_v_ == null ? null : Safety.unsafe(_v_).$field;
 					};
 					return e.map(transform);
 				case _:
